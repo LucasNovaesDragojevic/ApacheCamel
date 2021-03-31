@@ -38,18 +38,20 @@ public class RotaPedidos {
 				.filter()
 				.xpath("/item/formato[text()='EBOOK']")
 				.setProperty("ebookId", xpath("/item/livro/codigo/text()"))
-				.log("${id}")
+				//.log("${id}")
 				.marshal()
 				.xmljson()
-				.log("${body}")
+				//.log("${body}")
 				.setHeader(Exchange.HTTP_METHOD, HttpMethods.GET)
 				.setHeader(Exchange.HTTP_QUERY, simple("ebookId=${property.ebookId}&pedidoId=${property.pedidoId}&clienteId=${property.clienteId}"))
 				.to("http4://localhost:8080/webservices/ebook/item");
 				
 				from("direct:soap")
 				.routeId("rota-soap")
-				.setBody(constant("<envelope>teste</envelope>"))
-				.to("mock:soap");
+				.to("xslt:pedido-para-soap.xslt")
+				.log("${body}")
+				.setHeader(Exchange.CONTENT_TYPE, constant("text/xml"))
+				.to("http4://localhost:8080/webservices/financeiro");
 			}
 		});
 		context.start();
