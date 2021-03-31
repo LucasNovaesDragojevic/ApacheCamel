@@ -1,4 +1,4 @@
-package br.com.caelum.ebook;
+package br.com.ebook;
 
 import java.io.IOException;
 import java.util.Scanner;

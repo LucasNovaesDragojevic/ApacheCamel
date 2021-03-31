@@ -1,13 +1,13 @@
-package br.com.caelum.financeiro;
+package br.com.financeiro;
 
-import javax.jws.Oneway;
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-import javax.jws.WebService;
-import javax.jws.soap.SOAPBinding;
-import javax.jws.soap.SOAPBinding.ParameterStyle;
-import javax.jws.soap.SOAPBinding.Style;
-import javax.jws.soap.SOAPBinding.Use;
+import jakarta.jws.Oneway;
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebParam;
+import jakarta.jws.WebService;
+import jakarta.jws.soap.SOAPBinding;
+import jakarta.jws.soap.SOAPBinding.ParameterStyle;
+import jakarta.jws.soap.SOAPBinding.Style;
+import jakarta.jws.soap.SOAPBinding.Use;
 
 @WebService(targetNamespace="http://financeiro.com.br/nota") 
 @SOAPBinding(use=Use.LITERAL,style=Style.DOCUMENT,parameterStyle=ParameterStyle.BARE)
